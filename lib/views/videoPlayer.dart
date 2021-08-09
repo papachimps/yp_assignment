@@ -2,12 +2,12 @@ import 'package:flutter/services.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/material.dart';
 
+import 'package:get/get.dart';
 import 'package:flick_video_player/flick_video_player.dart';
 import 'package:video_player/video_player.dart';
-import 'package:get/get.dart';
 
-import '/cameraFeed.dart';
-import '/constants.dart';
+import 'cameraFeed.dart';
+import '../constants.dart';
 // import './constants.dart';
 
 class VideoPlayer extends StatefulWidget {

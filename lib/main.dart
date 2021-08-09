@@ -1,26 +1,37 @@
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
+
+import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
 
-// import '/cameraFeed.dart';
+import '/controller/authController.dart';
+import '/views/signScreen.dart';
+import '/views/homeScreen.dart';
+import '/views/videoPlayer.dart';
 
-import '/constants.dart';
-import '/videoPlayer.dart';
-
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  final fbService = Get.put(AuthController());
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      initialRoute: HomeScreen.route,
+      title: 'yp_assignment',
       debugShowCheckedModeBanner: false,
+      initialRoute: fbService.getSessionUser() == null
+          ? SignInScreen.route
+          : HomeScreen.route,
       // // get
       getPages: [
+        GetPage(
+          name: SignInScreen.route,
+          page: () => SignInScreen(),
+        ),
         GetPage(
           name: HomeScreen.route,
           page: () => HomeScreen(),
@@ -29,53 +40,9 @@ class MyApp extends StatelessWidget {
           name: VideoPlayer.route,
           page: () => VideoPlayer(),
         ),
-        // GetPage(
-        //   name: CameraFeed.route,
-        //   page: () => CameraFeed(),
-        // ),
       ],
     );
   }
 }
 
-class HomeScreen extends StatelessWidget {
-  static const String route = '/home';
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text('List of Videos'),
-        elevation: 0,
-      ),
-      body: ListView.builder(
-        physics: BouncingScrollPhysics(),
-        padding: EdgeInsets.symmetric(
-          vertical: gDefaultMargin2,
-          horizontal: gDefaultMargin,
-        ),
-        itemCount: videoList.length,
-        itemBuilder: (context, index) {
-          Map<String, dynamic> video = videoList[index];
-          return Column(
-            children: [
-              ListTile(
-                leading:
-                    CircleAvatar(backgroundImage: NetworkImage(video['thumb'])),
-                title: Text(video['title']),
-                subtitle: Text(video['subtitle']),
-                trailing: Icon(Icons.play_circle_fill_rounded),
-                onTap: () {
-                  // Get.toNamed('/camera');
-                  Get.toNamed('/video',
-                      arguments: {'source': video['sources'].first});
-                },
-              ),
-              Divider(),
-            ],
-          );
-        },
-      ),
-    );
-  }
-}
+

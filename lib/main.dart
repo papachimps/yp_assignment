@@ -1,7 +1,8 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:yp_assignment/cameraFeed.dart';
+
+// import '/cameraFeed.dart';
 
 import '/constants.dart';
 import '/videoPlayer.dart';
@@ -28,10 +29,10 @@ class MyApp extends StatelessWidget {
           name: VideoPlayer.route,
           page: () => VideoPlayer(),
         ),
-        GetPage(
-          name: CameraFeed.route,
-          page: () => CameraFeed(),
-        ),
+        // GetPage(
+        //   name: CameraFeed.route,
+        //   page: () => CameraFeed(),
+        // ),
       ],
     );
   }

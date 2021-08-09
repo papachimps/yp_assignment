@@ -1,5 +1,5 @@
-import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flick_video_player/flick_video_player.dart';
@@ -15,9 +15,6 @@ class VideoPlayer extends StatefulWidget {
   @override
   _VideoPlayerState createState() => _VideoPlayerState();
 }
-
-// const String VIDEO_URL =
-//     'https://firebasestorage.googleapis.com/v0/b/spicemilestones.appspot.com/o/ModuleContents%2Fvideos%2FDeep%20Breathing%20low%20noise.mp4?alt=media';
 
 class _VideoPlayerState extends State<VideoPlayer> {
   late FlickManager flickManager;

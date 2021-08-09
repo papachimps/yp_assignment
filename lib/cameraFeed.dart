@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:camera/camera.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:camera/camera.dart';
 
 // import 'camera.dart';
 

@@ -1,5 +1,3 @@
-import 'package:camera/camera.dart';
-
 var videoList = [
   {
     "sources": [
@@ -39,6 +37,3 @@ double gBaseMultiplier = 8;
 
 double gDefaultMargin = gBaseMultiplier * 2; //16
 double gDefaultMargin2 = gBaseMultiplier * 3; //24
-
-
-List<CameraDescription> gCameras = [];
